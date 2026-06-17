@@ -10,7 +10,14 @@
     *, *::before, *::after {
       box-sizing: border-box;
     }
-    
+    html {
+  scroll-behavior: smooth;
+}
+/* Fixes overlapping menu when clicking navigation anchor links */
+section, main, footer, [id] {
+  scroll-margin-top: 90px;
+}
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
