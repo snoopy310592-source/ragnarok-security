@@ -19,6 +19,46 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+/* Form Styling Essentials */
+.security-form {
+  max-width: 480px;
+  margin: 30px auto 0;
+  background: #111111;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #222222;
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.15);
+}
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.security-form input, 
+.security-form select, 
+.security-form textarea {
+  width: 100%;
+  padding: 12px;
+  background: #000000;
+  border: 1px solid #333333;
+  color: #ffffff;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+}
+.security-form input:focus, 
+.security-form select:focus, 
+.security-form textarea:focus {
+  border-color: #e50914;
+  outline: none;
+}
+.security-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+.security-form select option {
+  background: #111111;
+  color: #ffffff;
+}
 
     /* 2. Clear Red and White Typography Rules */
     h1, h2, h3, h4 {
@@ -304,7 +344,32 @@
       <h1>Protecting What Matters</h1>
       <p>Specialising in close protection and working within other security teams to achieve guarding solutions from private individuals to corporate organisations.</p>
       <p class="bold">Over 12 Years of Extensive Knowledge and Expertise</p>
-      <a href="#contact" class="cta-button">Request a Security Detail</a>
+      <!-- Interactive Booking Form -->
+<form action="https://formspree.io" method="POST" class="security-form">
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name / Company Name" required />
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email Address" required />
+  </div>
+  <div class="form-group">
+    <input type="tel" name="phone" placeholder="Contact Phone Number" required />
+  </div>
+  <div class="form-group">
+    <select name="service_type" required>
+      <option value="" disabled selected>Select Required Detail...</option>
+      <option value="VIP Close Protection">VIP Close Protection / CPO</option>
+      <option value="Commercial Guarding">Commercial Asset Guarding</option>
+      <option value="Industrial Logistics">Industrial Logistics / Escort</option>
+      <option value="Risk Assessment">Infrastructure Risk Audit</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea name="requirements" placeholder="Briefly describe operational requirements (e.g., Location, Timeline, Threat Level)..." required></textarea>
+  </div>
+  <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Deploy Security Request</button>
+</form>
+
     </div>
   </section>
 
