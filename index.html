@@ -1,161 +1,312 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ragnarok Security Solutions</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0a0a0a;
-      color: #e0e0e0;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ragnarok Security Solutions</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #eee;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0d0d0d;
+    border-bottom: 2px solid #b68d4c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    z-index: 1000;
+  }
+  nav .logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #b68d4c;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  nav ul li a {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ccc;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #b68d4c;
+  }
+  /* Top-right logo image */
+  .top-right-logo {
+    position: fixed;
+    top: 15px;
+    right: 40px;
+    width: 110px;
+    z-index: 1100;
+    border-radius: 6px;
+    box-shadow: 0 0 15px #b68d4c88;
+  }
+  .top-right-logo img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+  }
+  /* Hero */
+  header.hero {
+    height: 90vh;
+    background: url('https://i.imgur.com/9Wb7rGc.jpg') center center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    margin-top: 65px; /* navbar height */
+  }
+  header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+  }
+  header.hero .content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    text-align: center;
+    color: #f0a500;
+  }
+  header.hero .content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px #000;
+  }
+  header.hero .content p {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px #000;
+  }
+  header.hero .content p.bold {
+    font-weight: 700;
+    color: #ff3b3b;
+  }
+  /* Main content */
+  main {
+    max-width: 1200px;
+    padding: 40px 20px;
+    margin: 0 auto;
+  }
+  /* Services Section */
+  section.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  .service-card {
+    background: #1c1c1c;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 30px 25px;
+    box-shadow: 0 0 20px #b68d4c44;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #ddd;
+  }
+  .service-card:hover {
+    border-color: #b68d4c;
+    box-shadow: 0 0 30px #b68d4caa;
+  }
+  .service-card h3 {
+    color: #b68d4c;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  .service-card p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  /* We specialize Section */
+  section.specialize {
+    background: #222;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #b68d4c44;
+    margin-bottom: 50px;
+    color: #eee;
+  }
+  section.specialize h2 {
+    color: #b68d4c;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  section.specialize ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  section.specialize ul li {
+    background: #1a1a1a;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #f0a500;
+    box-shadow: 0 0 10px #b68d4c99;
+  }
+  /* Areas Covered */
+  section.areas {
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    color: #b68d4c;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+  /* About Section */
+  section.about {
+    max-width: 900px;
+    margin: 0 auto 70px;
+    color: #ccc;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  section.about h2 {
+    color: #b68d4c;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  /* Footer */
+  footer {
+    background: #0d0d0d;
+    padding: 30px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    border-top: 2px solid #b68d4c;
+  }
+  footer .contact-info p {
+    margin: 6px 0;
+  }
+  footer a {
+    color: #b68d4c;
+    font-weight: 600;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav {
+      padding: 15px 20px;
     }
-    header {
-      background-color: #111;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #444;
+    .top-right-logo {
+      width: 90px;
+      right: 20px;
     }
-    header h1 {
-      font-size: 28px;
-      letter-spacing: 2px;
-      color: #b0b0b0;
+    header.hero .content h1 {
+      font-size: 36px;
     }
-    nav a {
-      color: #b0b0b0;
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #f0a500;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1596495577886-d920f1a81bee?auto=format&fit=crop&w=1471&q=80') no-repeat center center/cover;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .hero h2 {
-      font-size: 44px;
-      margin: 0;
-      color: #f0a500;
-      text-shadow: 2px 2px 5px #000;
-    }
-    .hero p {
-      font-size: 20px;
-      margin-top: 10px;
-      max-width: 600px;
-      color: #ddd;
-      text-shadow: 1px 1px 3px #000;
-    }
-    .services {
-      background-color: #111;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-    .service-item {
-      flex: 1 1 250px;
-      margin: 20px;
-      padding: 20px;
-      background-color: #222;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #222;
-      text-align: center;
-      color: #eee;
-    }
-    .service-item h3 {
-      color: #f0a500;
-      margin-bottom: 15px;
-    }
-    .service-item p {
+    section.specialize ul li {
       font-size: 16px;
-      line-height: 1.5;
+      padding: 10px 16px;
     }
-    .about {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      color: #ccc;
-    }
-    .about h2 {
-      color: #f0a500;
-      margin-bottom: 20px;
-    }
-    footer {
-      background-color: #111;
-      padding: 20px 40px;
-      text-align: center;
-      color: #888;
-      border-top: 2px solid #444;
-    }
-    .contact-info {
-      margin-top: 10px;
-      font-size: 16px;
-    }
-    .contact-info a {
-      color: #f0a500;
-      text-decoration: none;
-    }
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>RAGNAROK SECURITY SOLUTIONS</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <nav>
+    <div class="logo">RAGNAROK</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="top-right-logo" aria-label="Ragnarok Security Services Logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABACAYAAAB9q2g6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABgklEQVR4nO3RsQ0CMRRF0T3f2hQXf+gP0F4CxkQMq6c81k7f4N0olqjX5qkpWlJWpSVqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqULq2j8ERlP0qCysAAAAASUVORK5CYII=" alt="Ragnarok Security Services Logo" />
+  </div>
+
+  <header class="hero" id="home">
+    <div class="content">
+      <h1>Protecting What Matters</h1>
+      <p>Delivering peace of mind with advanced surveillance, executive protection, and 24/7 monitoring.</p>
+      <p class="bold">From sites to estates to special events, we stand guard so you can sleep easy.</p>
+    </div>
   </header>
 
-  <section class="hero" id="home">
-    <h2>Protecting What Matters</h2>
-    <p>Delivering peace of mind with advanced surveillance, executive protection, and 24/7 monitoring.</p>
-  </section>
+  <main>
+    <section class="specialize" aria-label="Specializations">
+      <h2>We specialize in:</h2>
+      <ul>
+        <li>Industrial Facilities</li>
+        <li>Construction Sites</li>
+        <li>Residential Estates</li>
+        <li>Special Events</li>
+        <li>K-9 Handlers</li>
+        <li>Adhoc Security</li>
+      </ul>
+    </section>
 
-  <section class="services" id="services">
-    <div class="service-item">
-      <h3>Risk Assessment & Consulting</h3>
-      <p>Comprehensive risk analysis to identify vulnerabilities and create tailored security plans.</p>
-    </div>
-    <div class="service-item">
-      <h3>Advanced Surveillance</h3>
-      <p>State-of-the-art camera systems and monitoring to ensure your property is always protected.</p>
-    </div>
-    <div class="service-item">
-      <h3>Access Control Solutions</h3>
-      <p>Secure and manage entry points with smart access control technology.</p>
-    </div>
-    <div class="service-item">
-      <h3>Executive Protection</h3>
-      <p>Professional personal protection services for high-profile individuals and executives.</p>
-    </div>
-    <div class="service-item">
-      <h3>24/7 Monitoring</h3>
-      <p>Round-the-clock monitoring and rapid response to any security threats.</p>
-    </div>
-  </section>
+    <section class="areas" aria-label="Areas Covered">
+      Areas Covered: Benoni and surrounding areas.
+    </section>
 
-  <section class="about" id="about">
-    <h2>Over 12 Years of Experience</h2>
-    <p>Ragnarok Security Solutions has been providing trusted security services for over 12 years, specializing in customized security strategies tailored to meet each client's unique needs.</p>
-  </section>
+    <section class="services" id="services" aria-label="Services Offered">
+      <div class="service-card">
+        <h3>Risk Assessment & Consulting</h3>
+        <p>Comprehensive risk analysis to identify vulnerabilities and create tailored security plans.</p>
+      </div>
+      <div class="service-card">
+        <h3>Advanced Surveillance</h3>
+        <p>State-of-the-art camera systems and monitoring to ensure your property is always protected.</p>
+      </div>
+      <div class="service-card">
+        <h3>Access Control Solutions</h3>
+        <p>Secure and manage entry points with smart access control technology.</p>
+      </div>
+      <div class="service-card">
+        <h3>Executive Protection</h3>
+        <p>Professional personal protection services for high-profile individuals and executives.</p>
+      </div>
+      <div class="service-card">
+        <h3>24/7 Monitoring</h3>
+        <p>Round-the-clock monitoring and rapid response to any security threats.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>Over 12 Years of Experience</h2>
+      <p>Ragnarok Security Solutions has been providing trusted security services for over 12 years, specializing in customized security strategies tailored to meet each client's unique needs.</p>
+    </section>
+  </main>
 
   <footer id="contact">
     <p>Contact Us:</p>
