@@ -1,316 +1,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Ragnarok Security Solutions</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  /* Reset & base */
-  * {
+  /* Reset */
+  *, *::before, *::after {
     box-sizing: border-box;
   }
-  body, html {
-    margin: 0; padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    color: #eee;
-    background-color: #2c2c2c; /* Neutral dark gray background */
-    position: relative;
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2f2f2f; /* Neutral dark gray background */
+    color: #EEE;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  /* Container for all content */
-  .container {
-    position: relative;
-    z-index: 1;
+  a {
+    color: #F0A500;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Navigation */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #111;
+    border-bottom: 2px solid #F0A500;
+    z-index: 1000;
+  }
+  .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 20px 60px;
-  }
-  /* Logo top right */
-  .top-right-logo {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 120px;
-    height: auto;
-    z-index: 10;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #f0a500cc;
-    background: rgba(0,0,0,0.6);
-    padding: 10px;
-  }
-  .top-right-logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #444;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
+    padding: 15px 20px;
   }
-  header h1 {
+  .logo {
     font-size: 28px;
-    letter-spacing: 3px;
-    color: #bbb;
     font-weight: 700;
+    letter-spacing: 3px;
+    color: #F0A500;
+    user-select: none;
   }
-  nav a {
-    color: #bbb;
-    margin-left: 25px;
-    text-decoration: none;
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    display: inline;
+  }
+  nav ul li a {
     font-weight: 600;
     font-size: 16px;
+    color: #CCC;
     transition: color 0.3s ease;
   }
-  nav a:hover {
-    color: #f0a500;
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: #F0A500;
+    outline: none;
   }
-
-  /* Hero & Coverage section layout */
-  .main-content {
+  /* Responsive Nav Menu (for mobile) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+    justify-content: space-between;
+  }
+  .menu-toggle span {
+    height: 3px;
+    background: #F0A500;
+    border-radius: 2px;
+  }
+  @media (max-width: 768px) {
+    nav ul {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: #111;
+      width: 200px;
+      height: calc(100% - 60px);
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    nav ul.open {
+      transform: translateX(0);
+    }
+    nav ul li {
+      margin-bottom: 20px;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  /* Hero Section */
+  section.hero {
+    height: 90vh;
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-  }
-  .hero {
-    flex: 3;
-    min-width: 300px;
-    color: #f0a500;
-    text-shadow: 2px 2px 6px #000;
-  }
-  .hero h2 {
-    font-size: 48px;
-    margin-bottom: 15px;
-    font-weight: 700;
-  }
-  .hero p {
-    font-size: 20px;
-    line-height: 1.3;
-    margin-bottom: 20px;
-  }
-
-  .coverage-sidebar {
-    flex: 1.5;
-    min-width: 280px;
-    background-color: rgba(20, 20, 20, 0.8);
-    padding: 30px 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #f0a500cc;
-  }
-  .coverage-sidebar h3 {
-    color: #f0a500;
-    margin-bottom: 25px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-  }
-  .coverage-sidebar ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 18px;
-    color: #ddd;
-  }
-  .coverage-sidebar ul li {
-    margin: 12px 0;
-    position: relative;
-    padding-left: 30px;
-  }
-  .coverage-sidebar ul li::before {
-    content: "✅";
-    position: absolute;
-    left: 0;
-    color: #f0a500;
-    font-weight: 700;
-  }
-  .coverage-sidebar .tagline {
-    margin-top: 30px;
-    font-weight: 700;
-    font-size: 20px;
-    color: #ff3b3b;
-    text-align: center;
-  }
-
-  /* Areas Covered section */
-  .areas-covered {
-    max-width: 900px;
-    margin: 40px auto 60px;
-    text-align: center;
-    font-size: 20px;
-    color: #f0a500;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px #000;
-  }
-
-  /* Services grid */
-  .services {
-    margin: 60px 0 40px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+    align-items: center;
     justify-content: center;
-  }
-  .service-item {
-    background-color: rgba(20, 20, 20, 0.75);
-    border-radius: 12px;
-    box-shadow: 0 0 15px #f0a500cc;
-    padding: 25px;
-    flex: 1 1 250px;
-    max-width: 280px;
-    color: #eee;
     text-align: center;
-    transition: transform 0.3s ease;
+    padding: 0 20px;
+    margin-top: 60px; /* navbar height */
+    color: #F0A500;
+    user-select: none;
   }
-  .service-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 30px #f0a500ff;
+  section.hero > div {
+    max-width: 800px;
   }
-  .service-item h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #f0a500;
-  }
-  .service-item p {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  /* About section */
-  .about {
-    max-width: 900px;
-    margin: 0 auto 60px;
-    text-align: center;
-    color: #ccc;
-    font-size: 18px;
-    line-height: 1.6;
-    text-shadow: 1px 1px 3px #000;
-  }
-  .about h2 {
-    color: #f0a500;
-    margin-bottom: 20px;
+  section.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
     font-weight: 700;
-    font-size: 30px;
   }
-
+  section.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  section.hero p.bold {
+    color: #FF3B3B;
+    font-weight: 700;
+  }
+  /* Main Content */
+  main {
+    max-width: 1100px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+  }
+  /* Specialize Section */
+  section.specialize {
+    background: #222;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 0 25px #F0A500AA;
+    margin-bottom: 60px;
+    text-align: center;
+    color: #eee;
+  }
+  section.specialize h2 {
+    font-size: 2rem;
+    color: #F0A500;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+  section.specialize ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  section.specialize ul li {
+    background: #1a1a1a;
+    color: #F0A500;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px #F0A50088;
+  }
+  /* Areas Covered */
+  section.areas {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #F0A500;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  /* Services Section */
+  section.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  .service-card {
+    background: #1c1c1c;
+    border-radius: 12px;
+    padding: 30px 25px;
+    box-shadow: 0 0 20px #F0A50088;
+    color: #ddd;
+    transition: box-shadow 0.3s ease;
+  }
+  .service-card:hover,
+  .service-card:focus-within {
+    box-shadow: 0 0 35px #F0A500cc;
+  }
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #F0A500;
+    font-weight: 700;
+  }
+  .service-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  /* About Section */
+  section.about {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+  section.about h2 {
+    color: #F0A500;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
   /* Footer */
   footer {
+    background: #111;
+    padding: 30px 20px;
     text-align: center;
-    padding: 25px 20px;
-    background-color: rgba(0, 0, 0, 0.85);
-    border-top: 1px solid #444;
     color: #999;
-    font-size: 16px;
+    border-top: 2px solid #F0A500;
   }
   footer .contact-info p {
     margin: 6px 0;
+    font-size: 1rem;
   }
   footer a {
-    color: #f0a500;
-    text-decoration: none;
+    color: #F0A500;
     font-weight: 600;
   }
   footer a:hover {
     text-decoration: underline;
   }
-
   /* Responsive adjustments */
-  @media (max-width: 900px) {
-    .main-content {
+  @media (max-width: 768px) {
+    section.hero h1 {
+      font-size: 2.4rem;
+    }
+    section.specialize ul li {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+    nav ul {
       flex-direction: column;
+      background: #111;
+      position: fixed;
+      top: 60px;
+      right: -250px;
+      width: 220px;
+      height: calc(100% - 60px);
+      transition: right 0.3s ease;
+      padding-top: 25px;
     }
-    .coverage-sidebar, .hero {
-      max-width: 100%;
+    nav ul.open {
+      right: 0;
     }
-    .top-right-logo {
-      position: static;
-      margin: 0 auto 30px;
-      width: 140px;
-      display: block;
-      box-shadow: none;
-      background: none;
-      padding: 0;
+    nav ul li {
+      margin-bottom: 20px;
+    }
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      background: #F0A500;
+      height: 3px;
+      border-radius: 2px;
     }
   }
 </style>
 </head>
 <body>
-  <!-- Logo top right -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">RAGNAROK</div>
+      <nav>
+        <div class="menu-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul>
+          <li><a href="#home" tabindex="0">Home</a></li>
+          <li><a href="#services" tabindex="0">Services</a></li>
+          <li><a href="#contact" tabindex="0">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <div class="top-right-logo" aria-label="Ragnarok Security Services Logo">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABACAYAAAB9q2g6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABgklEQVR4nO3RsQ0CMRRF0T3f2hQXf+gP0F4CxkQMq6c81k7f4N0olqjX5qkpWlJWpSVqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqULq2j8ERlP0qCysAAAAASUVORK5CYII=" alt="Ragnarok Security Services Logo" />
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABACAYAAAB9q2g6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABgklEQVR4nO3RsQ0CMRRF0T3f2hQXf+gP0F4CxkQMq6c81k7f4N0olqjX5qkpWlJWpSVqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqULq2j8ERlP0qCysAAAAASUVORK5CYII=" alt="Ragnarok Security Services Logo" />
   </div>
 
-  <div class="container">
-    <header>
-      <h1>RAGNAROK SECURITY SOLUTIONS</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <section class="hero" id="home">
+    <div>
+      <h1>Protecting What Matters</h1>
+      <p>Delivering peace of mind with advanced surveillance, executive protection, and 24/7 monitoring.</p>
+      <p class="bold">From sites to estates to special events, we stand guard so you can sleep easy.</p>
+    </div>
+  </section>
 
-    <section class="main-content" id="home">
-      <article class="hero">
-        <h2>Protecting What Matters</h2>
-        <p>Delivering peace of mind with advanced surveillance, executive protection, and 24/7 monitoring.</p>
-        <p>From sites to estates to special events, we stand guard so you can sleep easy.</p>
-      </article>
-      <aside class="coverage-sidebar" aria-label="Specializations">
-        <h3>We specialize in:</h3>
-        <ul>
-          <li>Industrial Facilities</li>
-          <li>Construction Sites</li>
-          <li>Residential Estates</li>
-          <li>Special Events</li>
-          <li>K-9 Handlers</li>
-          <li>Adhoc Security</li>
-        </ul>
-        <p class="tagline">💥 Professional. Alert. Reliable.</p>
-      </aside>
+  <main>
+    <section class="specialize" aria-label="Specializations">
+      <h2>We specialize in:</h2>
+      <ul>
+        <li>Industrial Facilities</li>
+        <li>Construction Sites</li>
+        <li>Residential Estates</li>
+        <li>Special Events</li>
+        <li>K-9 Handlers</li>
+        <li>Adhoc Security</li>
+      </ul>
     </section>
 
-    <section class="areas-covered" aria-label="Areas Covered">
+    <section class="areas" aria-label="Areas Covered">
       Areas Covered: Benoni and surrounding areas.
     </section>
 
-    <section class="services" id="services">
-      <div class="service-item">
+    <section class="services" id="services" aria-label="Services Offered">
+      <article class="service-card" tabindex="0">
         <h3>Risk Assessment & Consulting</h3>
         <p>Comprehensive risk analysis to identify vulnerabilities and create tailored security plans.</p>
-      </div>
-      <div class="service-item">
+      </article>
+      <article class="service-card" tabindex="0">
         <h3>Advanced Surveillance</h3>
         <p>State-of-the-art camera systems and monitoring to ensure your property is always protected.</p>
-      </div>
-      <div class="service-item">
+      </article>
+      <article class="service-card" tabindex="0">
         <h3>Access Control Solutions</h3>
         <p>Secure and manage entry points with smart access control technology.</p>
-      </div>
-      <div class="service-item">
+      </article>
+      <article class="service-card" tabindex="0">
         <h3>Executive Protection</h3>
         <p>Professional personal protection services for high-profile individuals and executives.</p>
-      </div>
-      <div class="service-item">
+      </article>
+      <article class="service-card" tabindex="0">
         <h3>24/7 Monitoring</h3>
         <p>Round-the-clock monitoring and rapid response to any security threats.</p>
-      </div>
+      </article>
     </section>
 
     <section class="about" id="about">
       <h2>Over 12 Years of Experience</h2>
       <p>Ragnarok Security Solutions has been providing trusted security services for over 12 years, specializing in customized security strategies tailored to meet each client's unique needs.</p>
     </section>
+  </main>
 
-    <footer id="contact">
-      <p>Contact Us:</p>
-      <div class="contact-info">
-        <p>Email: <a href="mailto:shaun@ragnaroksecurity.co.za">shaun@ragnaroksecurity.co.za</a></p>
-        <p>Phone: <a href="tel:+27833520913">083 352 0913</a></p>
-      </div>
-      <p>&copy; 2024 Ragnarok Security Solutions. All rights reserved.</p>
-    </footer>
-  </div>
+  <footer id="contact">
+    <p>Contact Us:</p>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:shaun@ragnaroksecurity.co.za">shaun@ragnaroksecurity.co.za</a></p>
+      <p>Phone: <a href="tel:+27833520913">083 352 0913</a></p>
+    </div>
+    <p>&copy; 2024 Ragnarok Security Solutions. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle script
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('open');
+    });
+
+    // Accessibility: allow toggle via keyboard
+    menuToggle.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navUl.classList.toggle('open');
+      }
+    });
+  </script>
 </body>
 </html>
