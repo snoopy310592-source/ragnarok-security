@@ -37,16 +37,27 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
   }
   .logo {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: #F0A500;
+    display: flex;
+    align-items: center;
     user-select: none;
+  }
+  .logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #F0A500;
+    margin-right: 15px;
+    white-space: nowrap;
+  }
+  .logo-image {
+    height: 50px;
+  }
+  nav {
+    margin-left: auto;
   }
   nav ul {
     list-style: none;
@@ -105,6 +116,7 @@
     }
     .menu-toggle {
       display: flex;
+      margin-left: 20px;
     }
   }
   /* Hero Section */
@@ -287,13 +299,23 @@
       height: 3px;
       border-radius: 2px;
     }
+    .logo-text {
+      font-size: 20px;
+    }
+    .logo-image {
+      height: 40px;
+      margin-left: 8px;
+    }
   }
 </style>
 </head>
 <body>
   <header>
     <div class="nav-container">
-      <div class="logo">RAGNAROK</div>
+      <div class="logo">
+        <span class="logo-text">Ragnarok Security Solutions</span>
+        <img class="logo-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAACgCAYAAABv0U0uAAAACXBIWXMAAB7CAAAewgFu0HU+AAABnUlEQVR4nO3aQQ0CQRCF4YfVdBLOmQkXgBf3Ejv7Qw0c3qQ4f7tKLs+L2iNJ5NQIAAAAAAAAAAAAAAAAAAADwVq3DtnO82w9v7Fj7v57Npw7b05b/vaPzPnv3cOKrOTo8Nn6V6n9e4cc7hYfJ9cp6/k9cP+8p4ObkN9/8xP1wZy+Y7fXBu3+R8fN8MfT7A+fjxX8Pj+Fxfv74Xz+Vw8fL1dz8fj5fP+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6Xz+P5XDx8vVy+Pz6XZ87fzoH6/7l9JX0xV0V9nY9/psb1R3/fzq8AAAAAAAAAAAAAAAAAAOBf8B3ZQZz2LkK5AAAAABJRU5ErkJggg==" alt="Ragnarok Security Services Logo" />
+      </div>
       <nav>
         <div class="menu-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
           <span></span>
@@ -308,10 +330,6 @@
       </nav>
     </div>
   </header>
-
-  <div class="top-right-logo" aria-label="Ragnarok Security Services Logo">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABACAYAAAB9q2g6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABgklEQVR4nO3RsQ0CMRRF0T3f2hQXf+gP0F4CxkQMq6c81k7f4N0olqjX5qkpWlJWpSVqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqUlqULq2j8ERlP0qCysAAAAASUVORK5CYII=" alt="Ragnarok Security Services Logo" />
-  </div>
 
   <section class="hero" id="home">
     <div>
@@ -335,7 +353,7 @@
     </section>
 
     <section class="areas" aria-label="Areas Covered">
-      Areas Covered: Benoni and surrounding areas.
+      Areas Covered: Benoni and Surrounding Areas.
     </section>
 
     <section class="services" id="services" aria-label="Services Offered">
