@@ -21,7 +21,7 @@ section, main, footer, [id] {
 .hero-logo-img {
   display: block;
   margin: 0 auto 25px;       /* Centers it and pushes the headline down */
-  max-width: 800px;          /* Sets a crisp, professional width */
+  max-width: 600px;          /* Sets a crisp, professional width */
   width: 100%;               /* Responsive scaling rule for mobile */
   height: auto;
   filter: drop-shadow(0 0 15px rgba(229, 9, 20, 0.3)); /* Adds a premium subtle red glow */
@@ -160,6 +160,15 @@ section, main, footer, [id] {
       background: #e50914;
       border-radius: 2px;
     }
+section.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 80px; /* 👈 ADD THIS LINE: This clears the top menu bar space! */
+}
 
     /* 4. High-Impact Hero Layout Section */
     section.hero {
