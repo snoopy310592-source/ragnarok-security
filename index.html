@@ -341,6 +341,47 @@
       margin-left: 8px;
     }
   }
+  /* 1. Full Page Theme: Black background with white text */
+body {
+    background-color: #000000; /* Solid Black */
+    color: #ffffff;          /* Pure White for description text */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Headings: Bold Security Red */
+h1, h2, h3, h4 {
+    color: #e50914;          /* Sharp, vibrant tactical red */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 3. Description Texts: Forces all paragraph texts to stay bright white */
+p, span, li {
+    color: #ffffff;          /* Solid White */
+    line-height: 1.6;        /* Makes descriptions easy to read */
+}
+
+/* 4. Navigation Menu & Structural Boxes */
+header, nav, footer {
+    background-color: #111111; /* Very dark grey so the navbar splits from the page */
+    border-bottom: 2px solid #e50914; /* Red accent line under your header menu */
+}
+
+/* 5. Clean layout for your Service boxes */
+.service-box, .card {
+    background-color: #111111; /* Dark charcoal background box */
+    border: 1px solid #333333;  /* Subtle border outline */
+    border-radius: 6px;
+    padding: 20px;
+}
+
+/* Turns the box border red when a client hovers over it */
+.service-box:hover {
+    border-color: #e50914;
+}
+
 </style>
 </head>
 <body>
@@ -454,10 +495,8 @@
     </div>
     <p>&copy; 2024 Ragnarok Security Solutions. All rights reserved.</p>
 	<div class="social-links" style="margin-top: 20px;">
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="margin-right: 15px; color: #F0A500; text-decoration: none; font-weight: 600;">
-      LinkedIn
     </a>
-    <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color: #F0A500; text-decoration: none; font-weight: 600;">
+    <a href="https://www.facebook.com/profile.php?id=61553076212678" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color: #F0A500; text-decoration: none; font-weight: 600;">
       Facebook
     </a>
   </div>
