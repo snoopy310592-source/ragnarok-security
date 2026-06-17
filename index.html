@@ -8,6 +8,43 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+
+  /* This creates the responsive grid container */
+.services-grid {
+    display: grid;
+    /* This automatically figures out how many columns fit on the screen */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Adds clean spacing between the boxes */
+    padding: 20px 0;
+}
+
+/* This styles the individual service item blocks */
+.service-box {
+    background-color: #1a1a1a; /* Dark background matching a security theme */
+    border: 1px solid #333; /* Clean subtle border */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Adds a premium hover effect when users mouse over a service */
+.service-box:hover {
+    transform: translateY(-5px);
+    border-color: #ffcc00; /* Optional: Highlights your brand accent color */
+}
+
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,21 +77,18 @@
     align-items: center;
     padding: 15px 20px;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    user-select: none;
-  }
   .logo-text {
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 2px;
     color: #F0A500;
+    user-select: none;
     margin-right: 15px;
     white-space: nowrap;
   }
   .logo-image {
     height: 50px;
+    user-select: none;
   }
   nav {
     margin-left: auto;
@@ -350,6 +384,33 @@
         <li>Adhoc Security</li>
       </ul>
     </section>
+	<section id="services">
+    <h2>Our Specialised Services</h2>
+    
+    <!-- ADD THIS STARTING TAG -->
+    <div class="services-grid">
+        
+        <!-- Service 1 -->
+        <div class="service-box">
+            <h3>Armed Guarding</h3>
+            <p>High-end tactical protection for assets and facilities.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-box">
+            <h3>VIP Close Protection</h3>
+            <p>Executive security details and risk mitigation.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-box">
+            <h3>Asset Protection</h3>
+            <p>Securing high-value cargo and logistics tracking.</p>
+        </div>
+
+    </div> <!-- ADD THIS CLOSING TAG -->
+</section>
+
 
     <section class="areas" aria-label="Areas Covered">
       Areas Covered: Benoni and Surrounding Areas.
@@ -387,10 +448,37 @@
   <footer id="contact">
     <p>Contact Us:</p>
     <div class="contact-info">
+	
       <p>Email: <a href="mailto:shaun@ragnaroksecurity.co.za">shaun@ragnaroksecurity.co.za</a></p>
       <p>Phone: <a href="tel:+27833520913">083 352 0913</a></p>
     </div>
     <p>&copy; 2024 Ragnarok Security Solutions. All rights reserved.</p>
+	<div class="social-links" style="margin-top: 20px;">
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="margin-right: 15px; color: #F0A500; text-decoration: none; font-weight: 600;">
+      LinkedIn
+    </a>
+    <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color: #F0A500; text-decoration: none; font-weight: 600;">
+      Facebook
+    </a>
+  </div>
+</footer>
+
+<head>
+  <!-- Add Font Awesome CDN inside your <head> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <footer>
+    <div class="social-links" style="margin-top: 20px; font-size: 1.5rem;">
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="margin-right: 20px; color: #0A66C2;">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color: #1877F2;">
+        <i class="fab fa-facebook-square"></i>
+      </a>
+    </div>
+  </footer>
+</body>
   </footer>
 
   <script>
